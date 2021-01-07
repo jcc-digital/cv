@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Contact Me, Jennifer Carmin Campos | Personal Site</title>
+</head>
+
+<body>
+  <h1>Contact Jennifer, The Digital Girl</h1>
+  <!-- My Form -->
+  <h3>My HTML &amp; Javascript Practice Form</h3>
+  <form name="submit-to-google-sheet">
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="firstName" type="text" placeholder="First Name">
+    <input name="lastName" type="text" placeholder="Last Name">
+    <textarea name="message" rows="5" cols="80"></textarea>
+    <button type="submit">Send</button>
+  </form>
+
+  <hr>
+
+  <!-- Udemy HTML Form -->
+  <h3>Udemy HTML Form</h3>
+  <form action="mailto:jcm.optimization@gmail.com?subject=Lets%20Chat" method="post" enctype="text/plain">
+    <label for="">Your Full Name:</label>
+    <input type="text" name="Fullname" value="">
+
+    <br>
+
+    <label for="">Your Email:</label>
+    <input type="email" name="Email" value="">
+
+    <br>
+
+    <label for="">Your Message:</label>
+    <textarea name="Message" rows="5" cols="30" value=""></textarea>
+
+    <br>
+
+    <label for="">Type: 11:11 555</label>
+    <input type="password" name="Password" value="">
+    <br>
+
+    <input type="checkbox" name="Marketing Subscription" value="">
+    <label for="">Check this box to receive valuable digital and development insights to use for your business.</label>
+
+    <br>
+
+    <input type="submit" name="Submit" value="SUBMIT">
+  </form>
+  <br>
+
+  <hr /><!-- Horizontal Line Divider -->
+  <p><a href="index.html">Go back to Home</a></p>
+
+
+  <!-- Form script -->
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzlbc_TS4mtVruKMPd222DeIYRdkbG0GMT0kHWCsocTlMEf7x0wxF3-/exec'
+    const form = document.forms['submit-to-google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+      // Define what happens on successful data submission. But submission message is not displaying!!!
+      ('load', function(event) {
+        alert('Thanks for contacting me. I will respond asap.');
+      })
+    })
+  </script>
+</body>
+
+</html>
